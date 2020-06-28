@@ -1,0 +1,15 @@
+#################################################
+# Playbook for Ship Server Set-Up
+#################################################
+
+---
+  - hosts: all
+    vars:
+      ansible_user: "server"
+
+    tasks:
+      # System Set-Up
+      - import_tasks: ./shared/tasks/set-up-automation.yml
+      - import_tasks: ./shared/tasks/set-up-docker.yml
+
+      # TODO: Prepare NGINX services through docker compose.
