@@ -1,0 +1,14 @@
+---
+# Controller
+host_root: "../../../"
+
+# Server
+server_certificate_root: "/etc/letsencrypt"
+server_certificate_log_root: "/var/log/letsencrypt"
+
+server_domains: [
+  {name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com"}
+]
+
+# App
+app_root: "/var/www/freytag-drop"
