@@ -1,0 +1,57 @@
+# Outside environment prerequisites: "SERVER_ENVIRONMENT"
+
+# Environment
+
+- name: "SERVER - Start procedure log"
+  debug:
+    msg: "Starting services in environment '{{ server_environment }}'."
+  tags:
+    - services
+    - services-start
+
+- name: "SERVER - Set environment variables (for production)"
+  set_fact:
+    is_development_environment: no
+    server_certificate_directory: "/etc/letsencrypt"
+    nginx_config_name: "nginx.prod.conf"
+  when: server_environment == 'production'
+  tags:
+    - services
+    - services-start
+
+- name: "SERVER - Set environment variables (for development)"
+  set_fact:
+    is_development_environment: yes
+    server_certificate_directory: "/tmp/letsencrypt-dummy"
+    nginx_config_name: "nginx.dev.conf"
+  when: server_environment != 'production'
+  tags:
+    - services
+    - services-start
+
+# Services Start
+
+- name: "SERVER - Start server"
+  docker_compose:
+    project_name: "freytag-drop"
+    definition:
+      # Compose Headers
+      version: "3"
+      # Compose Services
+      services:
+        proxy:
+          image: nginx:latest
+          restart: unless-stopped
+          volumes:
+            - "{{ host_root }}/static:/var/www/ship/static"
+            - "{{ host_root }}/distribution/nginx/{{ nginx_config_name }}:/etc/nginx/nginx.conf"
+            - "{{ host_root }}/distribution/nginx/include:/etc/nginx/include"
+            - "{{ server_certificate_directory }}:/etc/letsencrypt"
+          ports:
+            - "80:80"
+            - "443:443"
+    restarted: yes
+  become: "{{ server_environment == 'production' }}"
+  tags:
+    - services
+    - services-start
