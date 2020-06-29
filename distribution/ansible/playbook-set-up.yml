@@ -3,13 +3,20 @@
 #################################################
 
 ---
-  - hosts: all
-    vars:
-      ansible_user: "server"
+- hosts: all
+  vars:
+    ansible_user: "server"
+    server_environment: "{{ lookup('env','SERVER_ENVIRONMENT') or 'development' }}"
+  vars_files:
+    - ./vars/foundation.yml
 
-    tasks:
-      # System Set-Up
-      - import_tasks: ./shared/tasks/set-up-automation.yml
-      - import_tasks: ./shared/tasks/set-up-docker.yml
+  tasks:
+    # System Set-Up
+    - import_tasks: ./shared/tasks/set-up-ansible.yml
+    - import_tasks: ./shared/tasks/set-up-docker.yml
 
-      # TODO: Prepare NGINX services through docker compose.
+    # Services Set-Up
+    - import_tasks: ./custom/tasks/set-up-server.yml
+
+    # Services Start
+    - import_tasks: ./custom/tasks/start-server.yml
