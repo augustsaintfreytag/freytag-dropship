@@ -1,5 +1,5 @@
 ---
-host_root: "../.."
+host_root: "{{ playbook_dir }}/../.."
 
 # Server
 server_certificate_root: "/etc/letsencrypt"
@@ -11,6 +11,7 @@ server_domains: [
 ]
 
 # App
+app_label: "freytag_dropship"
 app_version: "feature/initial-version"
-app_root: "/var/www/freytag-drop"
+app_root: "/var/www/freytag-dropship"
 app_repository: "gitlab.com/apricum/freytag-dropship.git"

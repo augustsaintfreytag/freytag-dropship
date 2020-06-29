@@ -18,3 +18,10 @@
     force: yes
   tags:
     - app-repo
+
+- name: "FILE - Copy dropshippable files (static content)"
+  synchronize:
+    src: "{{ host_root }}/static"
+    dest: "{{ app_root }}/static"
+  tags:
+    - app-static

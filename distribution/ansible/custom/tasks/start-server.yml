@@ -2,8 +2,8 @@
 
 - name: "SERVER - Start server"
   docker_compose:
-    project_name: "freytag_drop"
-    project_src: "."
+    project_name: "{{ app_label }}"
+    project_src: "{{ app_root }}"
     restarted: yes
   environment:
     NGINX_CONFIG_NAME: "{{ nginx_config_name }}"

@@ -1,0 +1,13 @@
+#################################################
+# Playbook for Debugging
+#################################################
+
+---
+- hosts: all
+  vars:
+    ansible_user: "server"
+
+  tasks:
+    - name: "DEBUG"
+      debug:
+        msg: "Ping"

@@ -4,16 +4,18 @@
 
 ---
 - hosts: all
-  vars:
-    ansible_user: "server"
-    server_environment: "{{ lookup('env','SERVER_ENVIRONMENT') or 'development' }}"
   vars_files:
     - ./vars/foundation.yml
+    - ./vars/credentials.private.yml
+  vars:
+    server_environment: "production"
+    ansible_user: "server"
 
   tasks:
     # System Set-Up
     - import_tasks: ./shared/tasks/set-up-ansible.yml
     - import_tasks: ./shared/tasks/set-up-docker.yml
+    - import_tasks: ./shared/tasks/set-up-firewall.yml
 
     # Environment Set-Up
     - import_tasks: ./custom/tasks/set-up-environment.yml
