@@ -10,3 +10,4 @@ server_domains: [
 # App
 app_version: "feature/initial-version"
 app_root: "/var/www/freytag-drop"
+app_repository: "gitlab.com/apricum/freytag-dropship.git"

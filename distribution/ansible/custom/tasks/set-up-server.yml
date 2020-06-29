@@ -12,7 +12,7 @@
 
 - name: "GIT - Clone project repository"
   git:
-    repo: "https://{{ gitlab_deploy_user }}:{{ gitlab_deploy_password }}@gitlab.com/apricum/freytag-drop.git"
+    repo: "https://{{ gitlab_deploy_user }}:{{ gitlab_deploy_password }}@{{ app_repository }}"
     dest: "{{ app_root }}"
     version: "{{ app_version }}"
     force: yes
