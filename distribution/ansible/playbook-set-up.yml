@@ -15,6 +15,9 @@
     - import_tasks: ./shared/tasks/set-up-ansible.yml
     - import_tasks: ./shared/tasks/set-up-docker.yml
 
+    # Environment Set-Up
+    - import_tasks: ./custom/tasks/set-up-environment.yml
+
     # Services Set-Up
     - import_tasks: ./custom/tasks/set-up-server.yml
 

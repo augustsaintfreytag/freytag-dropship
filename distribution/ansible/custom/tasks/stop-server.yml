@@ -1,13 +1,13 @@
-# Services Start
+# Services Stop
 
 - name: "SERVER - Start server"
   docker_compose:
     project_name: "freytag_drop"
     project_src: "."
-    restarted: yes
+    stopped: yes
   environment:
     NGINX_CONFIG_NAME: "{{ nginx_config_name }}"
     SERVER_CERTIFICATE_DIRECTORY: "{{ server_certificate_directory }}"
   tags:
     - services
-    - services-start
+    - services-stop
