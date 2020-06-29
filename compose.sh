@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$PARENT_PATH"
 
@@ -13,4 +15,4 @@ fi
 
 # Run Compose
 
-docker-compose --project-directory "$PARENT_PATH" -f "$PARENT_PATH/distribution/docker/docker-compose.yml" "$@"
+docker-compose -p "freytag_drop" "$@"
