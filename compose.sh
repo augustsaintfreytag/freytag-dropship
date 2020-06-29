@@ -6,10 +6,10 @@ cd "$PARENT_PATH"
 # Set Environment Variables
 
 if [ "$SERVER_ENVIRONMENT" == "production" ]; then
-	export SERVER_CERTIFICATE_DIRECTORY="/etc/letsencrypt"
+	export SERVER_CERTIFICATE_ROOT="/etc/letsencrypt"
 	export NGINX_CONFIG_NAME="nginx.prod.conf"
 else
-	export SERVER_CERTIFICATE_DIRECTORY="/tmp/letsencrypt-dummy"
+	export SERVER_CERTIFICATE_ROOT="/tmp/letsencrypt-dummy"
 	export NGINX_CONFIG_NAME="nginx.dev.conf"
 fi
 

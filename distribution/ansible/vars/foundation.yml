@@ -1,7 +1,10 @@
 ---
+host_root: "../.."
+
 # Server
 server_certificate_root: "/etc/letsencrypt"
 server_certificate_log_root: "/var/log/letsencrypt"
+nginx_config_name: "nginx.prod.conf"
 
 server_domains: [
   {name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com"}
