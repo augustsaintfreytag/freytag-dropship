@@ -2,8 +2,6 @@
 host_root: "{{ playbook_dir }}/../.."
 
 # Server
-server_port_http: "8081"
-server_port_https: "8082"
 server_certificate_root: "/etc/letsencrypt"
 server_certificate_log_root: "/var/log/letsencrypt"
 nginx_config_name: "nginx.prod.conf"

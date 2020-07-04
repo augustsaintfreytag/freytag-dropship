@@ -2,6 +2,7 @@ version: "3"
 
 services:
   proxy:
+    container_name: "freytag_drop_proxy"
     image: nginx:latest
     restart: unless-stopped
     volumes:
@@ -9,6 +10,9 @@ services:
       - ./distribution/nginx/${NGINX_CONFIG_NAME}:/etc/nginx/nginx.conf
       - ./distribution/nginx/include:/etc/nginx/include
       - ${SERVER_CERTIFICATE_ROOT}:/etc/letsencrypt
-    ports:
-      - "${SERVER_PORT_HTTP}:80"
-      - "${SERVER_PORT_HTTPS}:443"
+    networks:
+      - freytag_default
+
+networks:
+  freytag_default:
+    external: true
