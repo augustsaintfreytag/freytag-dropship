@@ -10,5 +10,5 @@ services:
       - ./distribution/nginx/include:/etc/nginx/include
       - ${SERVER_CERTIFICATE_ROOT}:/etc/letsencrypt
     ports:
-      - "80:80"
-      - "443:443"
+      - "${SERVER_PORT_HTTP}:80"
+      - "${SERVER_PORT_HTTPS}:443"
