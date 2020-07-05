@@ -1,9 +1,9 @@
-# Services Start
+# Services Stop
 
-- name: "SERVER - Start server"
+- name: "SERVER - Stop server"
   docker_compose:
     project_name: "{{ app_label }}"
-    project_src: "."
+    project_src: "{{ app_root }}"
     stopped: yes
   environment:
     COMPOSE_PROJECT_NAME: "freytag_drop"
