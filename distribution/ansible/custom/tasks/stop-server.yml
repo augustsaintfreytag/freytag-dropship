@@ -10,7 +10,8 @@
     NGINX_CONFIG_NAME: "{{ nginx_config_name }}"
     SERVER_CERTIFICATE_LOG_ROOT: "{{ server_certificate_log_root }}"
     SERVER_CERTIFICATE_ROOT: "{{ server_certificate_root }}"
+  become: yes
+  ignore_errors: yes
   tags:
     - services
     - services-start
-  become: yes
