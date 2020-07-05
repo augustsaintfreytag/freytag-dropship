@@ -1,0 +1,23 @@
+# Environment
+
+- name: "SERVER - Environment logging"
+  debug:
+    msg: "Setting up environment for '{{ server_environment }}'."
+  tags:
+    - environment
+
+- name: "SERVER - Set environment variables (for production)"
+  set_fact:
+    server_certificate_directory: "/etc/letsencrypt"
+    nginx_config_name: "nginx.prod.conf"
+  when: server_environment == 'production'
+  tags:
+    - environment
+
+- name: "SERVER - Set environment variables (for development)"
+  set_fact:
+    server_certificate_directory: "/tmp/letsencrypt-dummy"
+    nginx_config_name: "nginx.dev.conf"
+  when: server_environment != 'production'
+  tags:
+    - environment

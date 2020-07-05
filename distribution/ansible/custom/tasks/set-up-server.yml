@@ -1,0 +1,36 @@
+# Project Set-Up
+
+- name: "FILE - Set-up project directories"
+  file:
+    path: "{{ app_root }}"
+    state: directory
+    mode: "0755"
+    owner: "{{ ansible_user }}"
+  become: yes
+  tags:
+    - app-repo
+
+- name: "GIT - Clone project repository"
+  git:
+    repo: "https://{{ gitlab_deploy_user }}:{{ gitlab_deploy_password }}@{{ app_repository }}"
+    dest: "{{ app_root }}"
+    version: "{{ app_version }}"
+    force: yes
+  tags:
+    - app-repo
+
+- name: "FILE - Copy dropshippable files (static content)"
+  synchronize:
+    src: "{{ host_root }}/static"
+    dest: "{{ app_root }}"
+  tags:
+    - app-static
+
+- name: "DOCKER - Create shared network"
+  docker_network:
+    name: "freytag_default"
+    driver: bridge
+    scope: local
+  become: yes
+  tags:
+    - app-static

@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  proxy:
+    container_name: "freytag_drop_proxy"
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./static:/var/www/ship/static
+      - ./distribution/nginx/${NGINX_CONFIG_NAME}:/etc/nginx/nginx.conf
+      - ./distribution/nginx/include:/etc/nginx/include
+      - ${SERVER_CERTIFICATE_ROOT}:/etc/letsencrypt
+    networks:
+      - freytag_default
+
+networks:
+  freytag_default:
+    external: true

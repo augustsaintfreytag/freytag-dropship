@@ -1,0 +1,17 @@
+---
+host_root: "{{ playbook_dir }}/../.."
+
+# Server
+server_certificate_root: "/etc/letsencrypt"
+server_certificate_log_root: "/var/log/letsencrypt"
+nginx_config_name: "nginx.prod.conf"
+
+server_domains: [
+  {name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com"}
+]
+
+# App
+app_label: "freytag_dropship"
+app_version: "feature/initial-version"
+app_root: "/var/www/freytag-dropship"
+app_repository: "gitlab.com/apricum/freytag-dropship.git"
