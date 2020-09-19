@@ -3,7 +3,7 @@ host_root: "{{ playbook_dir }}/../.."
 
 # Server
 server_certificate_directory: "/etc/letsencrypt"
-server_certificate_log_directory: "/var/log/letsencrypt"
+server_certificate_logs_directory: "/var/log/letsencrypt"
 nginx_config_name: "nginx.live.conf"
 
 server_domains: [
