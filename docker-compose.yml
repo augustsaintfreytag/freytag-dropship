@@ -9,7 +9,8 @@ services:
       - ./static:/var/www/ship/static
       - ./distribution/nginx/${NGINX_CONFIG_NAME}:/etc/nginx/nginx.conf
       - ./distribution/nginx/include:/etc/nginx/include
-      - ${SERVER_CERTIFICATE_ROOT}:/etc/letsencrypt
+      - ${SERVER_CERTIFICATE_DIRECTORY}:/etc/letsencrypt
+      - ${SERVER_CERTIFICATE_LOGS_DIRECTORY}:/var/log/letsencrypt
     networks:
       - freytag_default
 
