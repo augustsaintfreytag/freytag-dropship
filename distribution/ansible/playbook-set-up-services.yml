@@ -1,6 +1,4 @@
-#################################################
-# Playbook for Ship Server Set-Up
-#################################################
+# Playbook for Dropship Server Set-Up
 
 ---
 - hosts: all
@@ -12,11 +10,6 @@
     ansible_user: "server"
 
   tasks:
-    # System Set-Up
-    - import_tasks: ./shared/tasks/set-up-ansible.yml
-    - import_tasks: ./shared/tasks/set-up-docker.yml
-    - import_tasks: ./shared/tasks/set-up-firewall.yml
-
     # Environment Set-Up
     - import_tasks: ./custom/tasks/set-up-environment.yml
 
