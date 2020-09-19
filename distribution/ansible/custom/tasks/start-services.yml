@@ -1,17 +1,16 @@
-# Services Stop
+# Services Start
 
-- name: "SERVER - Stop server"
+- name: "SERVER - Start server"
   docker_compose:
     project_name: "{{ app_label }}"
     project_src: "{{ app_root }}"
-    stopped: yes
+    restarted: yes
   environment:
     COMPOSE_PROJECT_NAME: "freytag_drop"
     NGINX_CONFIG_NAME: "{{ nginx_config_name }}"
-    SERVER_CERTIFICATE_LOG_DIRECTORY: "{{ server_certificate_log_directory }}"
     SERVER_CERTIFICATE_DIRECTORY: "{{ server_certificate_directory }}"
+    e: "{{ server_certificate_logs_directory }}"
   become: yes
-  ignore_errors: yes
   tags:
     - services
     - services-start

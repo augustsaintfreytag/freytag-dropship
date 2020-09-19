@@ -6,7 +6,7 @@
     - ./vars/foundation.yml
     - ./vars/credentials.private.yml
   vars:
-    server_environment: "production"
+    server_environment: "live"
     ansible_user: "server"
 
   tasks:
@@ -14,10 +14,10 @@
     - import_tasks: ./custom/tasks/set-up-environment.yml
 
     # Services Start
-    - import_tasks: ./custom/tasks/stop-server.yml
+    - import_tasks: ./custom/tasks/stop-services.yml
 
     # Services Set-Up
-    - import_tasks: ./custom/tasks/set-up-server.yml
+    - import_tasks: ./custom/tasks/set-up-services.yml
 
     # Services Start
-    - import_tasks: ./custom/tasks/start-server.yml
+    - import_tasks: ./custom/tasks/start-services.yml
