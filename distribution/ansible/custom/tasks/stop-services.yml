@@ -4,8 +4,8 @@
     project_name: "{{ app_label }}"
     project_src: "{{ app_root }}"
     stopped: yes
+    build: no
   environment:
-    COMPOSE_PROJECT_NAME: "freytag_drop"
     NGINX_CONFIG_NAME: "{{ nginx_config_name }}"
     SERVER_CERTIFICATE_DIRECTORY: "{{ server_certificate_directory }}"
     SERVER_CERTIFICATE_LOGS_DIRECTORY: "{{ server_certificate_logs_directory }}"
@@ -16,7 +16,7 @@
 
 - name: "SERVER - Remove service container from previous runs"
   docker_container:
-    name: "freytag_drop_proxy"
+    name: "freytag_dropship_proxy"
     state: absent
   become: yes
   tags:

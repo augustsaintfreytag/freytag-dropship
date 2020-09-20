@@ -2,7 +2,7 @@ version: "3"
 
 services:
   proxy:
-    container_name: "freytag_drop_proxy"
+    container_name: "freytag_dropship_proxy"
     image: nginx:latest
     restart: unless-stopped
     volumes:
