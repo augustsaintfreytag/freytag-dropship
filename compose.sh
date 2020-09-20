@@ -15,4 +15,4 @@ fi
 
 # Run Compose
 
-docker-compose -p "freytag_drop" "$@"
+docker-compose -p "freytag_dropship" "$@"
