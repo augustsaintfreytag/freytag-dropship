@@ -1,6 +1,4 @@
-#################################################
-# Playbook for Digital Ocean Droplet Set-Up
-#################################################
+# Playbook for System Set-Up
 
 ---
 - hosts: all
@@ -10,4 +8,7 @@
     server_user: "server"
 
   tasks:
-    - import_tasks: ./shared/tasks/set-up-vps.yml
+    # System Set-Up
+    - import_tasks: ./shared/tasks/set-up-ansible.yml
+    - import_tasks: ./shared/tasks/set-up-docker.yml
+    - import_tasks: ./shared/tasks/set-up-firewall.yml
