@@ -2,18 +2,19 @@ version: "3"
 
 services:
   proxy:
-    container_name: "freytag_dropship"
+    container_name: dropship_proxy
     image: nginx:latest
     restart: unless-stopped
     volumes:
       - ./static:/var/www/ship/static
-      - ./server/nginx/${proxy_config_name}:/etc/nginx/nginx.conf
+      - ./server/nginx/${SERVER_NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
       - ./server/nginx/include:/etc/nginx/include
       - ${SERVER_CERTIFICATE_DIRECTORY}:/etc/letsencrypt
       - ${SERVER_CERTIFICATE_LOG_DIRECTORY}:/var/log/letsencrypt
     networks:
-      - freytag_default
+      - shared
+    ports:
+      - 80:80
 
 networks:
-  freytag_default:
-    external: true
+  shared:
