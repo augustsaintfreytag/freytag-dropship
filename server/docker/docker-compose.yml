@@ -16,7 +16,8 @@ services:
     volumes:
       - ./static:/var/www/ship/static
       - ./server/nginx/${SERVER_NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
-      - ./server/nginx/include:/etc/nginx/include
+      - ./server/nginx/services:/etc/nginx/services
+      - ./server/nginx/mixins:/etc/nginx/mixins
       - ${SERVER_CERTIFICATE_DIRECTORY}:/etc/letsencrypt
       - ${SERVER_CERTIFICATE_LOG_DIRECTORY}:/var/log/letsencrypt
     networks:
