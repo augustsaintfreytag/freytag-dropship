@@ -3,10 +3,11 @@
 ---
 - hosts: all
 
+  vars_files:
+    - ./vars/foundation.yml
+
   vars:
     ansible_user: "root"
-    server_user: "server"
 
   tasks:
-    # Cloud Instance Set-Up
     - import_tasks: ./shared/tasks/set-up-vps.yml

@@ -1,0 +1,22 @@
+---
+host_root: "{{ playbook_dir }}/../.."
+
+# Server
+server_user: "server"
+server_domains: [
+  {name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com"}
+]
+
+# App
+app_label: "freytag_dropship"
+app_repository: "gitlab.com/apricum/freytag-dropship.git"
+app_version: "master"
+
+app_root: "/var/www/freytag-dropship"
+app_server_root: "{{ app_root }}/server"
+
+docker_root: "{{ app_server_root }}/docker"
+proxy_root: "{{ app_server_root }}/nginx"
+
+# Proxy
+proxy_config_name: "nginx.live.conf"

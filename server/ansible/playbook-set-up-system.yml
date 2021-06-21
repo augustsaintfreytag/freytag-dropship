@@ -3,12 +3,13 @@
 ---
 - hosts: all
 
+  vars_files:
+    - ./vars/foundation.yml
+
   vars:
-    ansible_user: "root"
-    server_user: "server"
+    ansible_user: "{{ server_user }}"
 
   tasks:
-    # System Set-Up
     - import_tasks: ./shared/tasks/set-up-ansible.yml
     - import_tasks: ./shared/tasks/set-up-docker.yml
     - import_tasks: ./shared/tasks/set-up-firewall.yml
