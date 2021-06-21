@@ -1,10 +1,18 @@
-version: "3"
+# Variables
+
+# "SERVER_NGINX_CONFIG_FILE"            NGINX configuration file name, mapped into the NGINX container. Example: "nginx.dev.conf"
+# "SERVER_CERTIFICATE_DIRECTORY"        Path to the server's local certificate directory (not in container).
+# "SERVER_CERTIFICATE_LOG_DIRECTORY"    Path to the server's local certificate log output directory (not in container).
+
+version: "3.9"
 
 services:
   proxy:
     container_name: dropship_proxy
-    image: nginx:latest
-    restart: unless-stopped
+    build:
+      context: ./server/docker
+      dockerfile: nginx.dockerfile
+    image: custom-nginx
     volumes:
       - ./static:/var/www/ship/static
       - ./server/nginx/${SERVER_NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
@@ -15,6 +23,8 @@ services:
       - shared
     ports:
       - 80:80
+      - 443:443
+    restart: unless-stopped
 
 networks:
   shared:
