@@ -14,7 +14,7 @@ services:
       dockerfile: nginx.dockerfile
     image: custom-nginx
     volumes:
-      - ./static:/var/www/ship/static
+      - ./static:/var/www/dropship/static
       - ./server/nginx/${SERVER_NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
       - ./server/nginx/services:/etc/nginx/services
       - ./server/nginx/mixins:/etc/nginx/mixins
