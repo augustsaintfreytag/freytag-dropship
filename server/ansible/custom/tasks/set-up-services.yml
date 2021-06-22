@@ -25,12 +25,3 @@
     dest: "{{ app_root }}"
   tags:
     - app-static
-
-- name: "DOCKER - Create shared network"
-  docker_network:
-    name: "freytag_default"
-    driver: bridge
-    scope: local
-  become: yes
-  tags:
-    - app-static
