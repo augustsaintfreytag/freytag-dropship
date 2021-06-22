@@ -1,18 +1,15 @@
 # Playbook for Dropship Server Set-Up
 
 ---
-- hosts: all
+- hosts: "{{ override_hosts | default('live') }}"
+
   vars_files:
     - ./vars/foundation.yml
     - ./vars/credentials.private.yml
   vars:
-    server_environment: "live"
-    ansible_user: "server"
+    ansible_user: "{{ server_user }}"
 
   tasks:
-    # Environment Set-Up
-    - import_tasks: ./custom/tasks/set-up-environment.yml
-
     # Services Start
     - import_tasks: ./custom/tasks/stop-services.yml
 
