@@ -15,11 +15,10 @@ server_domains:
   ]
 
 # App
-app_label: "freytag_dropship"
 app_repository: "gitlab.com/apricum/freytag-dropship.git"
 app_version: "feature/central-dropship"
 
-app_root: "/var/www/freytag-dropship"
+app_root: "/var/www/dropship"
 app_server_directory: "{{ app_root }}/server"
 
 docker_directory: "{{ app_server_directory }}/docker"
