@@ -1,9 +1,10 @@
 # Services Stop
 
-- name: "SERVER - Start application services"
+- name: "SERVER - Stop application services"
   shell:
     cmd: "docker-compose --file {{ docker_root }}/docker-compose.yml --project-name dropship --project-directory {{ app_root }} --env-file {{ docker_root }}/env/parameters.live.env down"
   become: yes
+  ignore_errors: yes
   tags:
     - services
     - services-stop
