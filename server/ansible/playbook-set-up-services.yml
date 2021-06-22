@@ -16,5 +16,9 @@
     # Services Set-Up
     - import_tasks: ./custom/tasks/set-up-services.yml
 
+    # Certificates
+    - import_tasks: ./shared/tasks/set-up-certificates.yml
+    - import_tasks: ./custom/tasks/set-up-certificate-crontab.yml
+
     # Services Start
     - import_tasks: ./custom/tasks/start-services.yml

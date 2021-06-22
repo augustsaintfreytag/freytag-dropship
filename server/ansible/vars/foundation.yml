@@ -3,9 +3,16 @@ host_root: "{{ playbook_dir }}/../.."
 
 # Server
 server_user: "server"
-server_domains: [
-  {name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com"}
-]
+server_certificate_directory: "/etc/letsencrypt"
+server_certificate_log_directory: "/var/log/letsencrypt"
+
+server_domains:
+  [
+    { name: "augustfreytag.com", domains: "augustfreytag.com,www.augustfreytag.com" },
+    { name: "cockpit.augustfreytag.com", domains: "cockpit.augustfreytag.com" },
+    { name: "drop.augustfreytag.com", domains: "drop.augustfreytag.com" },
+    { name: "analytics.augustfreytag.com", domains: "analytics.augustfreytag.com" }
+  ]
 
 # App
 app_label: "freytag_dropship"
