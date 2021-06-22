@@ -11,8 +11,8 @@ source "$DOCKERENV"
 set +a
 
 set +e
-mkdir "$SERVER_CERTIFICATE_DIRECTORY" &> /dev/null
-mkdir "$SERVER_CERTIFICATE_LOG_DIRECTORY" &> /dev/null
+mkdir "$SERVER_CERTIFICATE_ROOT" &> /dev/null
+mkdir "$SERVER_CERTIFICATE_LOG_ROOT" &> /dev/null
 set -e
 
 docker compose --file $DOCKERDIR/docker-compose.yml --project-directory $ROOTDIR $@	
