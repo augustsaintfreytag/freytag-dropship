@@ -19,6 +19,13 @@
   tags:
     - app-repo
 
+- name: "FILE - Copy private distribution files"
+  synchronize:
+    src: "{{ host_root }}/server/ansible/vars/credentials.private.yml"
+    dest: "{{ app_root }}/server/ansible/vars/credentials.private.yml"
+  tags:
+    - app-repo
+
 - name: "FILE - Copy dropship files (static content)"
   synchronize:
     src: "{{ host_root }}/static"
