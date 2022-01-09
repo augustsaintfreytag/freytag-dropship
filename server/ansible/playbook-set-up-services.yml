@@ -6,8 +6,6 @@
   vars_files:
     - ./vars/foundation.yml
     - ./vars/credentials.private.yml
-  vars:
-    ansible_user: "{{ server_user }}"
 
   tasks:
     # Services Start
