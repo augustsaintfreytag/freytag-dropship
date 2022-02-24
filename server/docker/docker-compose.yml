@@ -8,7 +8,6 @@ version: "3.9"
 
 services:
   proxy:
-    container_name: dropship_proxy
     build:
       context: ./server/docker
       dockerfile: nginx.dockerfile
@@ -28,4 +27,7 @@ services:
     restart: unless-stopped
 
 networks:
+  default:
+    name: dropship-default
   shared:
+    name: dropship-shared
