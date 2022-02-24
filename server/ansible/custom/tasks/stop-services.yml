@@ -2,7 +2,7 @@
 
 - name: "SERVER - Stop application services"
   shell:
-    cmd: "docker-compose --file {{ docker_directory }}/docker-compose.yml --project-name dropship --project-directory {{ app_root }} --env-file {{ docker_directory }}/env/parameters.live.env down"
+    cmd: "docker-compose --file {{ docker_directory }}/docker-compose.yml --project-name dropship --project-directory {{ app_root }} --env-file {{ docker_directory }}/env/parameters.production.env down"
   become: yes
   ignore_errors: yes
   tags:

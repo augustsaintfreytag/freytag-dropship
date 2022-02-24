@@ -4,7 +4,7 @@ BASEDIR=$(dirname "$0")
 ROOTDIR=$(realpath "$BASEDIR/..")
 
 DOCKERDIR="$ROOTDIR/server/docker"
-DOCKERENV="$DOCKERDIR/env/parameters.dev.env"
+DOCKER_ENV="$DOCKER_DIR/env/parameters.local.env"
 
 set -a
 source "$DOCKERENV"
