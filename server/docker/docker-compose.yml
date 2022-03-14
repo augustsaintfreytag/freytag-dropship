@@ -11,7 +11,7 @@ services:
     build:
       context: ./server/docker
       dockerfile: nginx.dockerfile
-    image: custom-nginx
+    image: custom/nginx
     volumes:
       - ./static:/var/www/dropship/static
       - ./server/nginx/${SERVER_NGINX_CONFIG_FILE}:/etc/nginx/nginx.conf
@@ -20,6 +20,7 @@ services:
       - ${SERVER_CERTIFICATE_DIR}:/etc/letsencrypt
       - ${SERVER_CERTIFICATE_LOG_DIR}:/var/log/letsencrypt
     networks:
+      - default
       - shared
     ports:
       - 80:80
