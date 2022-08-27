@@ -9,8 +9,7 @@ version: "3.9"
 services:
   proxy:
     build:
-      context: ./server/docker
-      dockerfile: nginx.dockerfile
+      context: ./server/images/nginx
     image: custom/nginx
     volumes:
       - ./static:/var/www/dropship/static
