@@ -10,9 +10,4 @@ set -a
 . "$DOCKER_ENV"
 set +a
 
-set +e
-mkdir "$SERVER_CERTIFICATE_DIR" &> /dev/null
-mkdir "$SERVER_CERTIFICATE_LOG_DIR" &> /dev/null
-set -e
-
-docker compose --file $DOCKER_DIR/docker-compose.yml --project-directory $ROOT_DIR $@
+docker compose --file "$DOCKER_DIR/docker-compose.yml" --project-directory "$ROOT_DIR" $@
